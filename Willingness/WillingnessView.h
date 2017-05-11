@@ -13,5 +13,6 @@
 @property (strong) NSTextField *label;
 @property (assign) int count;
 @property (assign) BOOL needResize;
+@property (strong) NSArray *sentenses;
 
 @end
