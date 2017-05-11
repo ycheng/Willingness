@@ -3,7 +3,7 @@
 //  Willingness
 //
 //  Created by ycheng on 2017/5/9.
-//  Copyright © 2017年 ycheng. All rights reserved.
+//  Copyright © 2017, ycheng. All rights reserved.
 //
 
 #import <ScreenSaver/ScreenSaver.h>
@@ -12,5 +12,6 @@
 
 @property (strong) NSTextField *label;
 @property (assign) int count;
+@property (assign) BOOL needResize;
 
 @end
