@@ -17,7 +17,7 @@ NSArray *_sentenses;
     self = [super initWithFrame:frame isPreview:isPreview];
     if (self) {
         [self initialize];
-        self.count = 0;
+        self.count = 5;
     }
     return self;
 }
@@ -49,13 +49,16 @@ NSArray *_sentenses;
 
 - (void)animateOneFrame {
     // [self setQuote: [NSString stringWithFormat: @"願心向法 願法向道\n願道斷惑 願惑顯智"]];
-    NSArray *s = self.sentenses;
-    NSUInteger i = SSRandomIntBetween(0, (int) (s.count - 1));
-    _label.stringValue = [s objectAtIndex: i];
+    if (self.count >= 5) {
+        NSArray *s = self.sentenses;
+        NSUInteger i = SSRandomIntBetween(0, (int) (s.count - 1));
+        _label.stringValue = [s objectAtIndex: i];
 
-    [self configureLabelFontSize];
-    [self setNeedsDisplay: YES];
+        [self configureLabelFontSize];
+        self.count = 0;
+    }
     self.count++;
+    [self setNeedsDisplay: YES];
 }
 
 - (BOOL)hasConfigureSheet {
@@ -69,7 +72,6 @@ NSArray *_sentenses;
 - (void) initialize {
     [self initLabel];
     [self setAnimationTimeInterval:5];
-    self.count++;
 }
 
 - (void) initLabel {
@@ -81,7 +83,7 @@ NSArray *_sentenses;
         [_label setEditable:NO];
         [_label setBezeled:NO];
         [self addSubview:_label];
-        _label.stringValue = @"Loading...";
+        _label.stringValue = @".";
     }
 }
 
